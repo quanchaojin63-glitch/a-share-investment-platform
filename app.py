@@ -139,13 +139,8 @@ terminal_g_pct = st.sidebar.slider(
 )
 
 terminal_g = terminal_g_pct / 100
-margin_pct = st.sidebar.slider(
-    "安全边际 (%)",
-    min_value=0,
-    max_value=50,
-    value=25,
-    step=5
-)
+
+  
 
 margin = margin_pct / 100
 discount = st.sidebar.slider("DCF 折现率", 6.0, 15.0, 9.0, 0.5) / 100
@@ -263,7 +258,7 @@ for gg in growth_range:
         matrix.loc[f"{gg:.0f}%",f"{pp:.0f}x"] = eps*(1+gg/100)*pp
 st.dataframe(matrix.style.format("¥{:.0f}"), use_container_width=True)
 
-# ---------- Watchlist ----------
+
 st.markdown("### ⭐ 安全边际扫描")
 scan = market.copy()
 scan["eps26"] = pd.to_numeric(scan.get("eps"), errors="coerce") * (1+g26)
