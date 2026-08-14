@@ -85,10 +85,69 @@ else:
 
 # ---------- Sidebar ----------
 st.sidebar.header("全局估值假设")
-g = st.sidebar.slider("2026E 盈利增长 (%)", -20, 80, 25)
-g27 = st.sidebar.slider("2027E 盈利增长 (%)", -20, 80, 22)
-fair_pe = st.sidebar.slider("合理 PE", 8.0, 60.0, 25.0, 0.5)
-margin = st.sidebar.slider("安全边际", 0.0, 50.0, 25.0, 5) / 100
+
+g = st.sidebar.slider(
+    "2026E 盈利增长 (%)",
+    min_value=-20,
+    max_value=80,
+    value=25,
+    step=1
+)
+
+g27 = st.sidebar.slider(
+    "2027E 盈利增长 (%)",
+    min_value=-20,
+    max_value=80,
+    value=22,
+    step=1
+)
+
+fair_pe = st.sidebar.slider(
+    "合理 PE",
+    min_value=8.0,
+    max_value=60.0,
+    value=25.0,
+    step=0.5
+)
+
+margin_pct = st.sidebar.slider(
+    "安全边际 (%)",
+    min_value=0,
+    max_value=50,
+    value=25,
+    step=5
+)
+
+margin = margin_pct / 100
+
+discount_pct = st.sidebar.slider(
+    "DCF 折现率 (%)",
+    min_value=6.0,
+    max_value=15.0,
+    value=9.0,
+    step=0.5
+)
+
+discount = discount_pct / 100
+
+terminal_g_pct = st.sidebar.slider(
+    "终值增长率 (%)",
+    min_value=1.0,
+    max_value=5.0,
+    value=3.0,
+    step=0.5
+)
+
+terminal_g = terminal_g_pct / 100
+margin_pct = st.sidebar.slider(
+    "安全边际 (%)",
+    min_value=0,
+    max_value=50,
+    value=25,
+    step=5
+)
+
+margin = margin_pct / 100
 discount = st.sidebar.slider("DCF 折现率", 6.0, 15.0, 9.0, 0.5) / 100
 terminal_g = st.sidebar.slider("终值增长率", 1.0, 5.0, 3.0, 0.5) / 100
 
